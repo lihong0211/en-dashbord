@@ -28,7 +28,9 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+],{
+  basename: '/en'
+});
 
 export default router;
 
