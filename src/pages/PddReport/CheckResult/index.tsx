@@ -29,7 +29,7 @@ export default function CheckResult() {
   return (
     <ProTable<ItemType>
       rowKey="id"
-      scroll={{ y: 460 }}
+      scroll={{ y: 460, x: 1500 }}
       columns={[
         {
           dataIndex: 'platform',
@@ -122,12 +122,6 @@ export default function CheckResult() {
         {
           dataIndex: 'medicineName',
           title: '药品信息',
-          hideInSearch: true,
-        },
-        {
-          dataIndex: 'create_time',
-          title: '创建时间',
-          width: 180,
           hideInSearch: true,
         },
       ]}

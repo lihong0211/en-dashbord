@@ -23,13 +23,8 @@ export default function AliReport() {
   return (
     <ProTable<ItemType>
       rowKey="id"
-      scroll={{ y: 460 }}
+      scroll={{ y: 460, x: 1500 }}
       columns={[
-        {
-          dataIndex: 'rpID',
-          title: '报告ID',
-          width: 120,
-        },
         {
           dataIndex: 'pharmacist',
           title: '药师',
@@ -86,12 +81,6 @@ export default function AliReport() {
         {
           dataIndex: 'medicines',
           title: '药品信息',
-          hideInSearch: true,
-        },
-        {
-          dataIndex: 'create_time',
-          title: '创建时间',
-          width: 180,
           hideInSearch: true,
         },
       ]}
