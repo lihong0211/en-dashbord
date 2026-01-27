@@ -75,114 +75,116 @@ export default function WordList() {
   `;
   const Content = (
     <>
-      <div
-        className="flex flex-wrap overflow-y-scroll justify-center"
-        style={{
-          height: 'calc(100vh - 200px)',
-        }}
-      >
-        {data.map((item, index) => {
-          return (
-            item && (
-              <Card
-                className="w-[350px] m-3 animate__animated animate__fadeIn h-[90px]"
-                bodyStyle={{ padding: 10 }}
-                key={index}
-              >
-                <div className="flex items-center justify-between mb-[10px]">
-                  <div className="overflow-hidden nowrap ellipsis">
-                    {item.meaning}
-                  </div>
-                  <Checkbox
-                    className="cursor-pointer"
-                    checked={item.mastered === 1}
-                    onClick={() => {
-                      request
-                        .post('/api/english/words/update', {
-                          ...item,
-                          mastered: item.mastered === 1 ? 2 : 1,
-                        })
-                        .then(() => {
-                          message.success('操作成功');
-                          setData((prev) => {
-                            const temp = [...prev];
-                            temp.splice(index, 1);
-                            return temp;
-                          });
-                        });
-                    }}
-                  >
-                    已掌握
-                  </Checkbox>
-                </div>
-
-                <Input
-                  allowClear
-                  value={item.test}
-                  placeholder="请输入..."
-                  onChange={(e) =>
-                    setData((prev) => {
-                      const temp = [...prev];
-                      temp[index].test = e.target.value;
-                      return temp;
-                    })
-                  }
-                  addonBefore={
-                    <div
-                      className="flex h-[25px] items-center text-xs text-gray-500 md:text-sm"
-                      css={style}
-                    >
-                      {item.test ? (
-                        <span>
-                          {item.test === item.word ? (
-                            <div
-                              className="ps-status ps-status-done"
-                              style={{ backgroundImage: `url(${doneImg}` }}
-                            />
-                          ) : (
-                            <div
-                              className="ps-status"
-                              style={{ backgroundImage: `url(${loadingImg}` }}
-                            />
-                          )}
-                        </span>
-                      ) : (
-                        <></>
-                      )}
-                    </div>
-                  }
-                  addonAfter={
-                    item.test !== item.word && (
-                      <span
-                        className="text-blue-500 cursor-pointer"
-                        onClick={() => {
-                          setData((prev) => {
-                            const temp = [...prev];
-                            temp[index].test = temp[index].word;
-                            return temp;
-                          });
-                        }}
-                      >
-                        提示
-                      </span>
-                    )
-                  }
-                />
-              </Card>
-            )
-          );
-        })}
-      </div>
-      <div className="w-full flex justify-center">
-        <Button
-          className="mt-2 ml-2"
-          type="primary"
-          onClick={() => {
-            getList(tabIndex);
+      <div className="relative">
+        <div
+          className="flex flex-wrap overflow-y-scroll justify-center"
+          style={{
+            height: 'calc(100vh - 280px)',
           }}
         >
-          换一批
-        </Button>
+          {data.map((item, index) => {
+            return (
+              item && (
+                <Card
+                  className="w-[350px] m-3 animate__animated animate__fadeIn h-[90px]"
+                  bodyStyle={{ padding: 10 }}
+                  key={index}
+                >
+                  <div className="flex items-center justify-between mb-[10px]">
+                    <div className="overflow-hidden nowrap ellipsis">
+                      {item.meaning}
+                    </div>
+                    <Checkbox
+                      className="cursor-pointer"
+                      checked={item.mastered === 1}
+                      onClick={() => {
+                        request
+                          .post('/api/english/words/update', {
+                            ...item,
+                            mastered: item.mastered === 1 ? 2 : 1,
+                          })
+                          .then(() => {
+                            message.success('操作成功');
+                            setData((prev) => {
+                              const temp = [...prev];
+                              temp.splice(index, 1);
+                              return temp;
+                            });
+                          });
+                      }}
+                    >
+                      已掌握
+                    </Checkbox>
+                  </div>
+
+                  <Input
+                    allowClear
+                    value={item.test}
+                    placeholder="请输入..."
+                    onChange={(e) =>
+                      setData((prev) => {
+                        const temp = [...prev];
+                        temp[index].test = e.target.value;
+                        return temp;
+                      })
+                    }
+                    addonBefore={
+                      <div
+                        className="flex h-[25px] items-center text-xs text-gray-500 md:text-sm"
+                        css={style}
+                      >
+                        {item.test ? (
+                          <span>
+                            {item.test === item.word ? (
+                              <div
+                                className="ps-status ps-status-done"
+                                style={{ backgroundImage: `url(${doneImg}` }}
+                              />
+                            ) : (
+                              <div
+                                className="ps-status"
+                                style={{ backgroundImage: `url(${loadingImg}` }}
+                              />
+                            )}
+                          </span>
+                        ) : (
+                          <></>
+                        )}
+                      </div>
+                    }
+                    addonAfter={
+                      item.test !== item.word && (
+                        <span
+                          className="text-blue-500 cursor-pointer"
+                          onClick={() => {
+                            setData((prev) => {
+                              const temp = [...prev];
+                              temp[index].test = temp[index].word;
+                              return temp;
+                            });
+                          }}
+                        >
+                          提示
+                        </span>
+                      )
+                    }
+                  />
+                </Card>
+              )
+            );
+          })}
+        </div>
+        <div className="absolute top-[5px] right-0">
+          <Button
+            className="mt-2 ml-2"
+            type="primary"
+            onClick={() => {
+              getList(tabIndex);
+            }}
+          >
+            换一批
+          </Button>
+        </div>
       </div>
     </>
   );

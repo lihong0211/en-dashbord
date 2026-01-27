@@ -24,16 +24,10 @@ export default function DialogueList() {
   return (
     <ProTable<ItemType>
       rowKey="id"
-      scroll={{ x: 1500, y: 660 }}
+      scroll={{  y: 450 }}
       search={false}
       columns={[
-        {
-          dataIndex: 'id',
-          title: 'ID',
-          hideInSearch: true,
-          fixed: 'left',
-          width: 80,
-        },
+       
         {
           dataIndex: 'speech',
           title: '用语',

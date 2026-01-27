@@ -26,17 +26,17 @@ export default function English() {
       children: <Affix />,
     },
     {
-      label: '对白',
+      label: '电影对白',
       key: '4',
       children: <Dialogue />,
     },
     {
-      label: '用语',
+      label: '日常用语',
       key: '5',
       children: <LivingSpeech />,
     },
     {
-      label: '测试',
+      label: '单词听写',
       key: '6',
       children: <Test />,
     },

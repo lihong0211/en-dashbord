@@ -45,16 +45,10 @@ export default function WordList() {
   return (
     <ProTable<ItemType>
       rowKey="id"
-      scroll={{ x: 1500, y: 600 }}
+      scroll={{  y: 450 }}
       search={{ defaultCollapsed: false, span: 4 }}
       columns={[
-        {
-          dataIndex: 'id',
-          title: 'ID',
-          hideInSearch: true,
-          fixed: 'left',
-          width: 80,
-        },
+       
         {
           dataIndex: 'word',
           title: '单词',

@@ -28,16 +28,10 @@ export default function Root() {
   return (
     <ProTable<ItemType>
       rowKey="id"
-      scroll={{ x: 1500, y: 660 }}
+      scroll={{  y: 450 }}
       search={false}
       columns={[
-        {
-          dataIndex: 'id',
-          title: 'ID',
-          hideInSearch: true,
-          fixed: 'left',
-          width: 80,
-        },
+       
         {
           dataIndex: 'name',
           title: '词缀',
