@@ -87,39 +87,6 @@ export default function AliReport() {
           dataIndex: 'medicines',
           title: '药品信息',
           hideInSearch: true,
-          render(_, entity) {
-            try {
-              const medicines = typeof entity.medicines === 'string' 
-                ? JSON.parse(entity.medicines) 
-                : entity.medicines;
-              return (
-                <Card bodyStyle={{ height: 300, overflow: 'scroll' }}>
-                  <ReactJsonView src={medicines} />
-                </Card>
-              );
-            } catch {
-              return <span>{entity.medicines}</span>;
-            }
-          },
-        },
-        {
-          dataIndex: 'query',
-          title: '查询内容',
-          hideInSearch: true,
-          render(_, entity) {
-            try {
-              const query = typeof entity.query === 'string' 
-                ? JSON.parse(entity.query) 
-                : entity.query;
-              return (
-                <Card bodyStyle={{ height: 300, overflow: 'scroll' }}>
-                  <ReactJsonView src={query} />
-                </Card>
-              );
-            } catch {
-              return <span>{entity.query}</span>;
-            }
-          },
         },
         {
           dataIndex: 'create_time',

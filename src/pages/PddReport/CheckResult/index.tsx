@@ -120,61 +120,9 @@ export default function CheckResult() {
           hideInSearch: true,
         },
         {
-          dataIndex: 'medicines',
+          dataIndex: 'medicineName',
           title: '药品信息',
           hideInSearch: true,
-          render(_, entity) {
-            try {
-              const medicines = typeof entity.medicines === 'string' 
-                ? JSON.parse(entity.medicines) 
-                : entity.medicines;
-              return (
-                <Card bodyStyle={{ height: 300, overflow: 'scroll' }}>
-                  <ReactJsonView src={medicines} />
-                </Card>
-              );
-            } catch {
-              return <span>{entity.medicines}</span>;
-            }
-          },
-        },
-        {
-          dataIndex: 'params',
-          title: '参数',
-          hideInSearch: true,
-          render(_, entity) {
-            try {
-              const params = typeof entity.params === 'string' 
-                ? JSON.parse(entity.params) 
-                : entity.params;
-              return (
-                <Card bodyStyle={{ height: 300, overflow: 'scroll' }}>
-                  <ReactJsonView src={params} />
-                </Card>
-              );
-            } catch {
-              return <span>{entity.params}</span>;
-            }
-          },
-        },
-        {
-          dataIndex: 'pdd_report',
-          title: 'PDD报告',
-          hideInSearch: true,
-          render(_, entity) {
-            try {
-              const report = typeof entity.pdd_report === 'string' 
-                ? JSON.parse(entity.pdd_report) 
-                : entity.pdd_report;
-              return (
-                <Card bodyStyle={{ height: 300, overflow: 'scroll' }}>
-                  <ReactJsonView src={report} />
-                </Card>
-              );
-            } catch {
-              return <span>{entity.pdd_report}</span>;
-            }
-          },
         },
         {
           dataIndex: 'create_time',
