@@ -1,22 +1,18 @@
 import { ProTable } from '@ant-design/pro-components';
-import { Card, Tag } from 'antd';
+import { Tag } from 'antd';
 import request from '../../../request';
-import ReactJsonView from 'react-json-view';
 
 type ItemType = {
   id: number;
   pharmacist: string;
-  patientSex: string;
+  patientSex: number;
   patientAge: number;
   primaryDiagnosis: string;
-  medicines: string;
   pass: boolean;
   reason: string;
-  query: string;
   rpID: string;
   refuse: number;
   costTime: number;
-  create_time: string;
 };
 
 export default function AliReport() {
@@ -25,6 +21,11 @@ export default function AliReport() {
       rowKey="id"
       scroll={{ y: 460, x: 1500 }}
       columns={[
+        {
+          dataIndex: 'rpID',
+          title: '报告ID',
+          width: 120,
+        },
         {
           dataIndex: 'pharmacist',
           title: '药师',
@@ -35,6 +36,12 @@ export default function AliReport() {
           title: '性别',
           width: 80,
           hideInSearch: true,
+          render: (_, entity) => {
+            const sex = entity.patientSex;
+            if (sex === 1) return '男';
+            if (sex === 2) return '女';
+            return sex ? String(sex) : '-';
+          },
         },
         {
           dataIndex: 'patientAge',
@@ -76,11 +83,6 @@ export default function AliReport() {
           title: '原因',
           width: 150,
           ellipsis: true,
-          hideInSearch: true,
-        },
-        {
-          dataIndex: 'medicines',
-          title: '药品信息',
           hideInSearch: true,
         },
       ]}

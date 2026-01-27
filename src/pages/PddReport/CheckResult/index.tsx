@@ -1,28 +1,20 @@
 import { ProTable } from '@ant-design/pro-components';
-import { Card, Tag } from 'antd';
+import {  Tag } from 'antd';
 import request from '../../../request';
-import ReactJsonView from 'react-json-view';
 
 type ItemType = {
-  id: number;
   platform: string;
-  patientSex: string;
+  patientSex: number;
   patientAge: number;
   primaryDiagnosis: string;
-  medicines: string;
-  pass_flag: boolean;
-  params: string;
-  error: string;
-  isNotMatch: boolean;
-  pdd_report: string;
   medicineName: string;
   specification: string;
   takeDirection: string;
-  takeFrequence: string;
-  medicineAmount: string;
-  takeDose: string;
+  takeFrequence: number;
+  takeDose: number;
   formType: string;
-  create_time: string;
+  pass_flag: boolean;
+  error: string;
 };
 
 export default function CheckResult() {
@@ -41,6 +33,12 @@ export default function CheckResult() {
           title: '性别',
           width: 80,
           hideInSearch: true,
+          render: (_, entity) => {
+            const sex = entity.patientSex;
+            if (sex === 1) return '男';
+            if (sex === 2) return '女';
+            return sex ? String(sex) : '-';
+          },
         },
         {
           dataIndex: 'patientAge',
@@ -102,27 +100,44 @@ export default function CheckResult() {
           ),
         },
         {
-          dataIndex: 'isNotMatch',
-          title: '不匹配',
-          width: 80,
-          hideInSearch: true,
-          render: (_, entity) => (
-            <Tag color={entity.isNotMatch ? 'red' : 'green'}>
-              {entity.isNotMatch ? '是' : '否'}
-            </Tag>
-          ),
-        },
-        {
           dataIndex: 'error',
           title: '错误信息',
           width: 200,
-          ellipsis: true,
           hideInSearch: true,
-        },
-        {
-          dataIndex: 'medicineName',
-          title: '药品信息',
-          hideInSearch: true,
+          render: (_, entity) => {
+            if (!entity.error) {
+              return <span>-</span>;
+            }
+            try {
+              const errors = typeof entity.error === 'string' 
+                ? JSON.parse(entity.error) 
+                : entity.error;
+              
+              if (!Array.isArray(errors) || errors.length === 0) {
+                return <span>-</span>;
+              }
+
+              // 根据 level 设置不同的颜色
+              const getColor = (level: number) => {
+                if (level >= 4) return 'red';
+                if (level >= 3) return 'orange';
+                if (level >= 2) return 'gold';
+                return 'default';
+              };
+
+              return (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                  {errors.map((item: any, index: number) => (
+                    <Tag key={index} color={getColor(item.level)}>
+                      {item.name || item}
+                    </Tag>
+                  ))}
+                </div>
+              );
+            } catch {
+              return <span>{entity.error}</span>;
+            }
+          },
         },
       ]}
       request={async ({ current, pageSize, ...rest }) => {
