@@ -1,6 +1,6 @@
 import Root from './pages/Root/index';
 import English from './pages/English/index';
-import PddReport from './pages/PddReport/index';
+import BusinessData from './pages/BusinessData/index';
 import Algorithm from './pages/Algorithm/index';
 import Test from './pages/English/Test/index';
 import { createBrowserRouter } from 'react-router-dom';
@@ -19,8 +19,8 @@ const router = createBrowserRouter([
         element: <Algorithm />,
       },
       {
-        path: '/pdd',
-        element: <PddReport />,
+        path: '/business-data',
+        element: <BusinessData />,
       },
       {
         path: '/test',

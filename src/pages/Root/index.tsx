@@ -23,28 +23,6 @@ export default function Root() {
       className="h-full"
       layout="mix"
       theme="dark"
-      avatarProps={{
-        title: <Avatar />,
-        src: <UserOutlined className="!text-gray-500" />,
-        render: (_: any, dom: any) => {
-          return (
-            <Dropdown
-              menu={{
-                items: [
-                  {
-                    key: 'logout',
-                    icon: <LogoutOutlined />,
-                    label: '退出登录',
-                    onClick: () => console.log('退出'),
-                  },
-                ],
-              }}
-            >
-              {dom}
-            </Dropdown>
-          );
-        },
-      }}
       title="doctor-dog"
       location={{ pathname }}
       menuItemRender={(item: any, dom: any) => (

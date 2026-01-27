@@ -13,13 +13,11 @@ export default {
       //   component: '../Algorithm',
       // },
       {
-        path: '/pdd',
-        name: '拼多多',
-        component: '../PddReport',
+        path: '/business-data',
+        name: '业务数据',
+        component: '../BusinessData',
       },
     ],
   },
-  location: {
-    pathname: '/',
-  },
+  
 };
