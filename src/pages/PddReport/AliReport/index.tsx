@@ -3,12 +3,12 @@ import { Tag } from 'antd';
 import request from '../../../request';
 
 type ItemType = {
+  pass_flag: any;
   id: number;
   pharmacist: string;
   patientSex: number;
   patientAge: number;
   primaryDiagnosis: string;
-  pass: boolean;
   reason: string;
   rpID: string;
   refuse: number;
@@ -21,11 +21,6 @@ export default function AliReport() {
       rowKey="id"
       scroll={{ y: 460, x: 1500 }}
       columns={[
-        {
-          dataIndex: 'rpID',
-          title: '报告ID',
-          width: 120,
-        },
         {
           dataIndex: 'pharmacist',
           title: '药师',
@@ -56,13 +51,19 @@ export default function AliReport() {
           ellipsis: true,
         },
         {
-          dataIndex: 'pass',
+            dataIndex: 'medicines',
+            title: '药品信息',
+            width: 200,
+            ellipsis: true,
+          },
+        {
+          dataIndex: 'pass_flag',
           title: '通过',
           width: 80,
           hideInSearch: true,
           render: (_, entity) => (
-            <Tag color={entity.pass ? 'green' : 'red'}>
-              {entity.pass ? '是' : '否'}
+            <Tag color={entity.pass_flag ? 'green' : 'red'}>
+              {entity.pass_flag ? '是' : '否'}
             </Tag>
           ),
         },
