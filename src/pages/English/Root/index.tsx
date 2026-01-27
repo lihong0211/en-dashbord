@@ -15,7 +15,7 @@ type ItemType = {
 export default function Root() {
   const handleDelete = async (id: number, cb: any) => {
     request
-      .post(`/api/root/delete`, { id })
+      .post(`/api/english/root/delete`, { id })
       .then(() => {
         message.success('删除成功');
         cb();
@@ -114,7 +114,7 @@ export default function Root() {
         ];
       }}
       request={async ({}) => {
-        const data = await request.post(`/api/root/list`);
+        const data = await request.post(`/api/english/root/list`);
         setList(() => data?.data);
         return {
           success: true,

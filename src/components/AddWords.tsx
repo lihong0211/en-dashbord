@@ -6,7 +6,7 @@ import request from '../../src/request';
 export default function AddWords(props: { form: any }) {
   const [words, setWords] = useState<{ word: string; meaning: string }[]>([]);
   const getWords = () => {
-    request.post('/api/words/list', { page: 1, size: 10000 }).then((res) => {
+    request.post('/api/english/words/list', { page: 1, size: 10000 }).then((res) => {
       setWords(() =>
         res?.data.map((item: { [x: string]: any }) => {
           return {
@@ -112,7 +112,7 @@ export default function AddWords(props: { form: any }) {
                         size="small"
                         style={{ float: 'right' }}
                         onClick={async () => {
-                          const url = '/api/words/add';
+                          const url = '/api/english/words/add';
                           const words = props.form.getFieldValue('words');
                           const data = words[item.name];
                           request

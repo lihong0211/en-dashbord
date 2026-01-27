@@ -25,7 +25,7 @@ function AddEdit(props: {
       }}
       onFinish={async (data) => {
         const id = props.initialValues?.id;
-        const url = id ? '/api/affix/update' : '/api/affix/add';
+        const url = id ? '/api/english/affix/update' : '/api/english/affix/add';
         let close = false;
         await request
           .post(url, { ...data, id })

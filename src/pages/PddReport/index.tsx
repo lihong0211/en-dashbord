@@ -1,25 +1,26 @@
 import { Tabs } from 'antd';
 
-import Chat from './Chat';
-import MakeRp from './MakeRp';
-import JdVersion from './JdVersion';
+
+import AliReport from './AliReport';
+import CheckResult from './CheckResult';
+import PluginStatistic from './PluginStatistic';
 
 export default function English() {
   const items = [
     {
-      label: '会话',
+      label: '阿里报告',
       key: '1',
-      children: <Chat />,
+      children: <AliReport />,
     },
     {
-      label: '开方',
+      label: '合理用药',
       key: '2',
-      children: <MakeRp />,
+      children: <CheckResult />,
     },
     {
-      label: '京东版本号',
+      label: '插件统计',
       key: '3',
-      children: <JdVersion />,
+      children: <PluginStatistic />,
     },
   ];
 

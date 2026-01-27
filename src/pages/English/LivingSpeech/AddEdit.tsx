@@ -17,7 +17,7 @@ function AddEdit(props: {
       }}
       onFinish={async (data) => {
         const id = props.initialValues?.id;
-        const url = id ? '/api/living-speech/update' : '/api/living-speech/add';
+        const url = id ? '/api/english/living-speech/update' : '/api/english/living-speech/add';
         let close = false;
         await request
           .post(url, { ...data, id })

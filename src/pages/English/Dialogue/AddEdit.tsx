@@ -22,7 +22,7 @@ function AddEdit(props: {
       form={form}
       onFinish={async (data) => {
         const id = props.initialValues?.id;
-        const url = id ? '/api/dialogue/update' : '/api/dialogue/add';
+        const url = id ? '/api/english/dialogue/update' : '/api/english/dialogue/add';
         let close = false;
         await request
           .post(url, { ...data, id })
