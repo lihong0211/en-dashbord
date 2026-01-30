@@ -27,7 +27,7 @@ export default function PluginStatistic() {
       <Card title="插件统计列表">
         <ProTable<StatisticItemType>
           rowKey={(record) => `${record.user_name}-${record.platform}-${record.plugin_version}-${record.date}`}
-          scroll={{ y: 460 }}
+          scroll={{ y: 450 }}
           search={{
             labelWidth: 'auto',
             defaultCollapsed: false,
@@ -52,6 +52,7 @@ export default function PluginStatistic() {
               dataIndex: 'date',
               title: '日期',
               width: 120,
+              hideInSearch: true,
             },
             {
               dataIndex: 'hms',
