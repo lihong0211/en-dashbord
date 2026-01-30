@@ -29,7 +29,7 @@ const router = createBrowserRouter([
     ],
   },
 ],{
-  basename: '/en'
+  basename: '/'
 });
 
 export default router;
