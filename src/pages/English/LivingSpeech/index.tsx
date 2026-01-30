@@ -12,7 +12,7 @@ type ItemType = {
 export default function DialogueList() {
   const handleDelete = async (id: number, cb: any) => {
     request
-      .post(`/api/english/living-speech/delete`, { id })
+      .post(`/english/living-speech/delete`, { id })
       .then(() => {
         message.success('删除成功');
         cb();
@@ -75,7 +75,7 @@ export default function DialogueList() {
         ];
       }}
       request={async ({ current, pageSize, ...rest }) => {
-        const data = await request.post(`/api/english/living-speech/list`, {
+        const data = await request.post(`/english/living-speech/list`, {
           page: current,
           size: pageSize,
           query: {

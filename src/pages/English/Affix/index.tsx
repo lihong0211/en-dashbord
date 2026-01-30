@@ -15,7 +15,7 @@ type ItemType = {
 export default function Root() {
   const handleDelete = async (id: number, cb: any) => {
     request
-      .post(`/api/english/affix/delete`, { id })
+      .post(`/english/affix/delete`, { id })
       .then(() => {
         message.success('删除成功');
         cb();
@@ -121,7 +121,7 @@ export default function Root() {
         ];
       }}
       request={async ({}) => {
-        const data = await request.get(`/api/english/affix/list`);
+        const data = await request.get(`/english/affix/list`);
         setList(() =>
           data?.data.map((item: any) => {
             return {

@@ -92,7 +92,7 @@ export default function PluginStatistic() {
               ? dayjs(timeRange[1]).format('YYYY-MM-DD HH:mm:ss')
               : defaultEnd.format('YYYY-MM-DD HH:mm:ss');
 
-            const data = await request.post(`/api/peach/plugin-statistics/list`, {
+            const data = await request.post(`/peach/plugin-statistics/list`, {
               page: current,
               size: pageSize,
               startTime,

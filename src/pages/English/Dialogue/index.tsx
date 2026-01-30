@@ -14,7 +14,7 @@ type ItemType = {
 export default function DialogueList() {
   const handleDelete = async (id: number, cb: any) => {
     request
-      .post(`/api/english/dialogue/delete`, { id })
+      .post(`/english/dialogue/delete`, { id })
       .then(() => {
         message.success('删除成功');
         cb();
@@ -126,7 +126,7 @@ export default function DialogueList() {
         ];
       }}
       request={async ({ inviteCode, ...rest }) => {
-        const data = await request.get(`/api/english/dialogue/list`);
+        const data = await request.get(`/english/dialogue/list`);
         return {
           success: true,
           ...data,

@@ -141,7 +141,7 @@ export default function CheckResult() {
         },
       ]}
       request={async ({ current, pageSize, ...rest }) => {
-        const data = await request.post(`/api/peach/check-result/list`, {
+        const data = await request.post(`/peach/check-result/list`, {
           page: current,
           size: pageSize,
           query: {

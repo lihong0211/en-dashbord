@@ -23,7 +23,7 @@ export default function WordList() {
   const [roots, setRoots] = useState<any[]>([]);
   const [affixes, setAffixes] = useState<any[]>([]);
   useEffect(() => {
-    request.post(`/api/english/root/list`).then((res: any) => {
+    request.post(`/english/root/list`).then((res: any) => {
       setRoots(() =>
         res?.data.map((item: any) => ({
           label: item.name,
@@ -32,7 +32,7 @@ export default function WordList() {
         }))
       );
     });
-    request.get(`/api/english/affix/list`).then((res: any) => {
+    request.get(`/english/affix/list`).then((res: any) => {
       setAffixes(() =>
         res?.data.map((item: any) => ({
           label: item.name,
@@ -75,7 +75,7 @@ export default function WordList() {
                 checked={entity?.mastered === 1}
                 onChange={(e: any) => {
                   request
-                    .post('/api/english/words/update', {
+                    .post('/english/words/update', {
                       ...entity,
                       mastered: e.target.checked ? 1 : 2,
                     })
@@ -154,7 +154,7 @@ export default function WordList() {
                   title="确定删除该单词吗"
                   onConfirm={() => {
                     request
-                      .post(`/api/english/words/delete`, { id: entity.id })
+                      .post(`/english/words/delete`, { id: entity.id })
                       .then(() => {
                         message.success('删除成功');
                         action?.reload();
@@ -183,7 +183,7 @@ export default function WordList() {
         ];
       }}
       request={async ({ current, pageSize, ...rest }) => {
-        const data = await request.post(`/api/english/words/list`, {
+        const data = await request.post(`/english/words/list`, {
           page: current,
           size: pageSize,
           query: {

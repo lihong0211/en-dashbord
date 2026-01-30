@@ -10,7 +10,7 @@ export default function WordList() {
   const [tabIndex, setTabIndex] = useState('1');
   const getList = (tabIndex: string) => {
     request
-      .post(`/api/english/words/list`, {
+      .post(`/english/words/list`, {
         page: 1,
         size: 10000,
         query: {
@@ -99,7 +99,7 @@ export default function WordList() {
                       checked={item.mastered === 1}
                       onClick={() => {
                         request
-                          .post('/api/english/words/update', {
+                          .post('/english/words/update', {
                             ...item,
                             mastered: item.mastered === 1 ? 2 : 1,
                           })

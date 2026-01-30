@@ -24,7 +24,7 @@ function AddEdit(props: {
       }}
       onFinish={async (data) => {
         const id = props.initialValues?.id;
-        const url = id ? '/api/english/words/update' : '/api/english/words/add';
+        const url = id ? '/english/words/update' : '/english/words/add';
         let close = false;
         data.mastered = data.mastered ? 1 : 2;
         await request

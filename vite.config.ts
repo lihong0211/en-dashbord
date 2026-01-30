@@ -10,10 +10,13 @@ export default defineConfig({
     port: 3389,
     // host: '0.0.0.0',
     proxy: {
-      '/api': {
+      '/english': {
         target: 'http://localhost:3000/',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+      '/peach': {
+        target: 'http://localhost:3000/',
+        changeOrigin: true,
       },
     },
   },

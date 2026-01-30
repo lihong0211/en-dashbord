@@ -88,7 +88,7 @@ export default function AliReport() {
         },
       ]}
       request={async ({ current, pageSize, ...rest }) => {
-        const data = await request.post(`/api/peach/ali-report/list`, {
+        const data = await request.post(`/peach/ali-report/list`, {
           page: current,
           size: pageSize,
           query: {
