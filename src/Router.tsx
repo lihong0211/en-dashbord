@@ -1,9 +1,8 @@
 import Root from './pages/Root/index';
 import English from './pages/English/index';
 import BusinessData from './pages/BusinessData/index';
-import Algorithm from './pages/Algorithm/index';
 import Test from './pages/English/Test/index';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 const router = createBrowserRouter([
   {
@@ -11,12 +10,12 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       {
-        path: '/English',
-        element: <English />,
+        index: true,
+        element: <Navigate to="/english" replace />,
       },
       {
-        path: '/algorithm',
-        element: <Algorithm />,
+        path: '/english',
+        element: <English />,
       },
       {
         path: '/business-data',
