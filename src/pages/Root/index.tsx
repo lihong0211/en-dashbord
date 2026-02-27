@@ -20,7 +20,6 @@ export default function Root() {
       className="h-full"
       layout="mix"
       theme="dark"
-      title="doctor-dog"
       location={{ pathname }}
       menuItemRender={(item: any, dom: any) => (
         <NavLink to={item.key!}>{dom}</NavLink>
